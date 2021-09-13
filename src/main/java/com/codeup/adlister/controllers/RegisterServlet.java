@@ -21,6 +21,8 @@ public class RegisterServlet extends HttpServlet {
         }
 
         request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
+
+        request.getSession().removeAttribute("invalidregistration");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
