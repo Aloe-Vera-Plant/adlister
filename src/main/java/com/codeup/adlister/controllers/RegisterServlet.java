@@ -28,7 +28,11 @@ public class RegisterServlet extends HttpServlet {
             || password.isEmpty()
             || (! password.equals(passwordConfirmation));
 
-        if (inputHasErrors) {
+        // verify username is unique
+
+        boolean uniqueUsername = DaoFactory.getUsersDao().findByUsername(username) != null;
+
+        if (inputHasErrors || !uniqueUsername) {
             response.sendRedirect("/register");
             return;
         }
