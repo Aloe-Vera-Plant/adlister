@@ -1,5 +1,6 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.Config;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 import org.mindrot.jbcrypt.BCrypt;
@@ -31,13 +32,14 @@ public class MySQLUsersDao implements Users {
             stmt.setString(1, username);
             return extractUser(stmt.executeQuery());
         } catch (SQLException e) {
-            throw new RuntimeException("Error finding a user by username", e);
+            return null;
         }
     }
 
     @Override
     public Long insert(User user) {
         String query = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
+
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             String hashedPw = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
