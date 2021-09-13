@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -6,7 +7,15 @@
     </jsp:include>
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<c:choose>
+    <c:when test="${user != null}">
+        <jsp:include page="partials/logged_navbar.jsp"/>
+    </c:when>
+    <c:otherwise>
+        <jsp:include page="partials/default_navbar.jsp"/>
+    </c:otherwise>
+</c:choose>
+
     <div class="container">
         <h1>Please Log In</h1>
         <form action="/login" method="POST">
@@ -21,5 +30,6 @@
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
         </form>
     </div>
+<jsp:include page="partials/scripts.jsp"/>
 </body>
 </html>

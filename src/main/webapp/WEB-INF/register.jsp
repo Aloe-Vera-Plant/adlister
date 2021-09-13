@@ -7,12 +7,19 @@
     </jsp:include>
 </head>
 <body>
-    <jsp:include page="partials/navbar.jsp" />
+<c:choose>
+    <c:when test="${user != null}">
+        <jsp:include page="partials/logged_navbar.jsp"/>
+    </c:when>
+    <c:otherwise>
+        <jsp:include page="partials/default_navbar.jsp"/>
+    </c:otherwise>
+</c:choose>
     <div class="container">
-        <h1>Please fill in your information.</h1>
+        <h1>Please fill out the required fields.</h1>
         <form action="/register" method="post">
             <c:if test = "${invalidregistration}">
-                <p style="color: darkred">Your username or password was invalid. Please try again.</p>
+                <p style="color: darkred">Your username was taken or your input was invalid. Please try again.</p>
             </c:if>
             <div class="form-group">
                 <label for="username">Username</label>
@@ -33,5 +40,6 @@
             <input type="submit" class="btn btn-primary btn-block">
         </form>
     </div>
+<jsp:include page="partials/scripts.jsp"/>
 </body>
 </html>
