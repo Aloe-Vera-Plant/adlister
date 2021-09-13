@@ -39,6 +39,7 @@ public class MySQLUsersDao implements Users {
     @Override
     public Long insert(User user) {
         String query = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
+
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             String hashedPw = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());

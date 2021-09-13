@@ -9,10 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        if (request.getSession().getAttribute("user") != null) {
+            response.sendRedirect("/profile");
+            return;
+        }
+
         request.getRequestDispatcher("/WEB-INF/register.jsp").forward(request, response);
     }
 
@@ -23,16 +30,21 @@ public class RegisterServlet extends HttpServlet {
         String passwordConfirmation = request.getParameter("confirm_password");
 
         // validate input
-        boolean inputHasErrors = username.isEmpty()
-            || email.isEmpty()
-            || password.isEmpty()
-            || (! password.equals(passwordConfirmation));
+        boolean inputHasErrors = false;
+        try {
+            inputHasErrors = username.isEmpty()
+                    || email.isEmpty()
+                    || password.isEmpty()
+                    || (!password.equals(passwordConfirmation))
+                    || DaoFactory.getUsersDao().findByUsername(username) != null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            inputHasErrors = true;
+        }
 
-        // verify username is unique
 
-        boolean uniqueUsername = DaoFactory.getUsersDao().findByUsername(username) != null;
-
-        if (inputHasErrors || !uniqueUsername) {
+        if (inputHasErrors) {
+            request.getSession().setAttribute("invalidregistration", true);
             response.sendRedirect("/register");
             return;
         }
@@ -43,3 +55,4 @@ public class RegisterServlet extends HttpServlet {
         response.sendRedirect("/login");
     }
 }
+
