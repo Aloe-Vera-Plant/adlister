@@ -26,8 +26,6 @@
                         <li><a class="dropdown-item" href="/profile">Profile</a></li>
                         <li><a class="dropdown-item" href="/logout">Logout</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/update-profile">Update Profile</a></li>
-                        <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/ads/create">List Ad</a></li>
                     </ul>
                 </li>

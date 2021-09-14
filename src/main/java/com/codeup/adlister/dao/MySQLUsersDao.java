@@ -79,32 +79,4 @@ public class MySQLUsersDao implements Users {
         );
     }
 
-    @Override
-    public void updateUserInfo(String usernameUp, String email, String currentUsername) {
-        try {
-            PreparedStatement pstm = connection.prepareStatement("UPDATE users SET username = ?, email = ? WHERE username = ?");
-            pstm.setString(1, usernameUp);
-            pstm.setString(2, email);
-            pstm.setString(3, currentUsername);
-            pstm.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void updateUserPass(String newPassword, String username) {
-        User userToUpdate = DaoFactory.getUsersDao().findByUsername(username);
-
-        try {
-
-            PreparedStatement pstm = connection.prepareStatement("UPDATE users SET password = ? WHERE username = ?");
-            pstm.setString(1, newPassword);
-            pstm.setString(2, username);
-            pstm.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }

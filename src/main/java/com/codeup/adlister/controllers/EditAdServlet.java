@@ -49,9 +49,7 @@ public class EditAdServlet extends HttpServlet {
                 request.getParameter("description")
         );
 
-        String adidString = request.getParameter("adid").trim();
-
-        Long adid = Long.parseLong(adidString);
+        Long adid = Long.parseLong(request.getParameter("adid"));
 
         try {
             DaoFactory.getAdsDao().editAdById(adid, ad.getTitle(), ad.getDescription());
