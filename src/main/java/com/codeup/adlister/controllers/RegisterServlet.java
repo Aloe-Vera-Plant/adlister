@@ -36,7 +36,7 @@ public class RegisterServlet extends HttpServlet {
         try {
             inputHasErrors = Form.hasEmptyInputs(new String[] {username, email, password})
                     || Form.unconfirmedPassword(password, passwordConfirmation)
-                    || DaoFactory.getUsersDao().findByUsername(username) != null;
+                    || Form.usernameIsTaken(username);
         } catch (Exception e) {
             e.printStackTrace();
             inputHasErrors = true;
