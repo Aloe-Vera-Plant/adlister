@@ -9,10 +9,15 @@ public interface Ads {
     List<Ad> all();
     // insert a new ad and return the new ad's id
     Long insert(Ad ad);
+
+
+   List<Ad> search(String searchTerm);
+
     // get individual ad based on passed id
     Ad getAd(long id);
     //edit ad
     public void editAdById(long id, String title, String description);
 
     public void deleteAdById(long id);
+
 }

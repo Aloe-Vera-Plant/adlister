@@ -18,9 +18,9 @@ public class MySQLAdsDao implements Ads {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getUrl(),
-                config.getUser(),
-                config.getPassword()
+                    config.getUrl(),
+                    config.getUser(),
+                    config.getPassword()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
@@ -57,6 +57,15 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
+    public List<Ad> search(String searchTerm) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement( "select * from ads where title LIKE ?");
+            stmt.setString(1,"%" + searchTerm + "%");
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
     public Ad getAd(long id) {
         PreparedStatement stmt = null;
         String selectQuery = "SELECT * FROM ads where id = ?";
@@ -74,10 +83,10 @@ public class MySQLAdsDao implements Ads {
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("title"),
-            rs.getString("description")
+                rs.getLong("id"),
+                rs.getLong("user_id"),
+                rs.getString("title"),
+                rs.getString("description")
         );
     }
 
