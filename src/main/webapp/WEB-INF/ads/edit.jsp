@@ -15,7 +15,7 @@
     <form action="/ads/edit-ad" method="post">
         <div class="form-group">
             <label for="adid">Ad ID:</label>
-            <input id="adid" name="adid" readonly value="<c:out value="${id}"/> ">
+            <input id="adid" name="adid" readonly value="<c:out value="${id}"/>">
             <br>
             <label for="title">Title</label>
             <input id="title" name="title" class="form-control" type="text" value="<c:out value="${title}"/>">
