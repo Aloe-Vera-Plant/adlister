@@ -18,13 +18,13 @@
             <input id="adid" name="adid" readonly value="<c:out value="${id}"/> ">
             <br>
             <label for="title">Title</label>
-            <input id="title" name="title" class="form-control" type="text" value="<c:out value="${title}">">
+            <input id="title" name="title" class="form-control" type="text" value="<c:out value="${title}"/>">
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control" type="text"><c:out value="${description}">/textarea>
+            <textarea id="description" name="description" class="form-control" type="text"><c:out value="${description}"/></textarea>
         </div>
-        <input type="submit" class="btn btn-block btn-primary">
+    <button type="submit" class="btn btn-block btn-primary">Submit</button>
     </form>
 </div>
 
