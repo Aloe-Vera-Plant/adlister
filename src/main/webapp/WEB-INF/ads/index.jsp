@@ -7,10 +7,17 @@
     </jsp:include>
 </head>
 <body>
-<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<c:choose>
+    <c:when test="${user != null}">
+        <jsp:include page="../partials/logged_navbar.jsp"/>
+    </c:when>
+    <c:otherwise>
+        <jsp:include page="../partials/default_navbar.jsp"/>
+    </c:otherwise>
+</c:choose>
 
 <div class="container">
-    <h1>Here Are all the ads!</h1>
+    <h1>Here is a listing of our current ads:</h1>
 
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
@@ -19,6 +26,7 @@
         </div>
     </c:forEach>
 </div>
+<jsp:include page="/WEB-INF/partials/scripts.jsp"/>
 
 </body>
 </html>
