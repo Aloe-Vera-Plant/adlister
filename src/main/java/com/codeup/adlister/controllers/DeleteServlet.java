@@ -51,12 +51,17 @@ public class DeleteServlet extends HttpServlet {
 
         Long adid = Long.parseLong(request.getParameter("adid"));
 
-        try {
-            DaoFactory.getAdsDao().deleteAdById(adid);
-            response.sendRedirect("/ads");
-        } catch (Exception e) {
+        if (Integer.parseInt(request.getParameter("confirm")) > 0) {
+            try {
+                DaoFactory.getAdsDao().deleteAdById(adid);
+                response.sendRedirect("/ads");
+            } catch (Exception e) {
+                response.sendRedirect("/ads");
+            }
+        } else {
             response.sendRedirect("/ads");
         }
+
 
     }
 }
