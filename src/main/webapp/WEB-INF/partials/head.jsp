@@ -7,4 +7,10 @@
     button {
         margin-top: 5px;
     }
+    a {
+        text-decoration: none;
+    }
+    a:hover {
+        color: aqua;
+    }
 </style>
