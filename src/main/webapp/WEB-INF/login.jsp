@@ -16,7 +16,8 @@
     </c:otherwise>
 </c:choose>
 
-    <div class="container">
+    <div class="container justify-content-center">
+
         <h1>Please Log In</h1>
         <form action="/login" method="POST">
             <div class="form-group">
@@ -29,6 +30,7 @@
             </div>
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
         </form>
+        <h5><a href="/register">Don't have an account? Register now!</a> </h5>
     </div>
 <jsp:include page="partials/scripts.jsp"/>
 </body>

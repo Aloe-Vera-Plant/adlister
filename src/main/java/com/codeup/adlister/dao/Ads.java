@@ -11,4 +11,8 @@ public interface Ads {
     Long insert(Ad ad);
     // get individual ad based on passed id
     Ad getAd(long id);
+    //edit ad
+    public void editAdById(long id, String title, String description);
+
+    public void deleteAdById(long id);
 }

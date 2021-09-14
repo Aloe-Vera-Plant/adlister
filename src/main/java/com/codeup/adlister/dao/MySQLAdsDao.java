@@ -88,4 +88,32 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+    public void editAdById(long id, String title, String description) {
+        PreparedStatement pstm = null;
+        String updateQuery = "UPDATE ads SET title = ?, description = ? WHERE id = ?";
+        try {
+            pstm = connection.prepareStatement(updateQuery);
+            pstm.setString(1, title);
+            pstm.setString(2, description);
+            pstm.setLong(3, id);
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteAdById(long id) {
+        PreparedStatement pstm = null;
+        String updateQuery = "DELETE FROM ads WHERE id = ?";
+        try {
+            pstm = connection.prepareStatement(updateQuery);
+            pstm.setLong(1, id);
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
