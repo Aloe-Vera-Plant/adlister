@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -21,6 +22,9 @@ public class ViewAdServlet extends HttpServlet {
             request.setAttribute("userId", ad.getUserId());
             request.setAttribute("title", ad.getTitle());
             request.setAttribute("description", ad.getDescription());
+            User user = DaoFactory.getUsersDao().findUserById(ad.getUserId());
+            request.setAttribute("username", user.getUsername());
+            request.setAttribute("email", user.getEmail());
             request.getRequestDispatcher("/WEB-INF/ads/view-ad.jsp").forward(request, response);
         }
     }

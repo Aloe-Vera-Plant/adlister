@@ -9,6 +9,8 @@
         <h1>${title}</h1>
         <p>${description}</p>
         <p>Ad id: ${id}</p>
+        <p>Posted by: ${username}</p>
+        <p>Email: ${email}</p><%-- Not sure about this, may be privacy issue --%>
     </div>
 </body>
 </html>
