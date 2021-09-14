@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
@@ -36,7 +35,7 @@ public class RegisterServlet extends HttpServlet {
         boolean inputHasErrors = false;
         try {
             inputHasErrors = Form.hasEmptyInputs(new String[] {username, email, password})
-                    || (!password.equals(passwordConfirmation))
+                    || Form.unconfirmedPassword(password, passwordConfirmation)
                     || DaoFactory.getUsersDao().findByUsername(username) != null;
         } catch (Exception e) {
             e.printStackTrace();

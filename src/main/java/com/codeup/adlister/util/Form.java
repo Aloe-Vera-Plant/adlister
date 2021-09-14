@@ -8,4 +8,8 @@ public class Form {
 
         return false;
     }
+
+    public static boolean unconfirmedPassword(String password, String passwordConfirmation) {
+        return !password.equals(passwordConfirmation);
+    }
 }
