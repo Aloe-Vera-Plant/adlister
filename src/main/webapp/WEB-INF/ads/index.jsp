@@ -3,7 +3,6 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-
         <jsp:param name="title" value="Index of Ads" />
     </jsp:include>
 </head>
@@ -16,7 +15,6 @@
         <jsp:include page="../partials/default_navbar.jsp"/>
     </c:otherwise>
 </c:choose>
-
 
 <div class="container">
 

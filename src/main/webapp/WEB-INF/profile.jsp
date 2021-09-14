@@ -16,9 +16,5 @@
     </div>
 <jsp:include page="partials/scripts.jsp"/>
 
-    <div>
-        <a href="/ads/search">Searching for an ad?</a>
-    </div>
-
 </body>
 </html>
