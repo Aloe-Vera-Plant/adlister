@@ -16,7 +16,7 @@
     </c:otherwise>
 </c:choose>
     <div class="container">
-        <h1>Please fill out the required fields.</h1>
+        <h5>Please fill out the required fields to register an account.</h5>
         <form action="/register" method="post">
             <c:if test = "${invalidregistration}">
                 <p style="color: darkred">Your username was taken or your input was invalid. Please try again.</p>
