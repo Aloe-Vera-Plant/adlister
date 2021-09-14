@@ -13,14 +13,17 @@ import java.io.IOException;
 public class DeleteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        User userlog = (User) request.getSession().getAttribute("user");
+
+        long id = Long.parseLong(request.getParameter("id"));
+        Ad ad = DaoFactory.getAdsDao().getAd(id);
         if (request.getSession().getAttribute("user") == null) {
             request.getSession().setAttribute("intendedpage", "profile");
             response.sendRedirect("/login");
             return;
-        }
-        long id = Long.parseLong(request.getParameter("id"));
-        Ad ad = DaoFactory.getAdsDao().getAd(id);
-        if (ad == null) {
+        } else if (!request.getParameter("uid").equals(userlog.getUsername())) {
+            response.sendRedirect("/ads");
+        } if (ad == null) {
             response.sendRedirect("/ads");
         } else {
             request.setAttribute("id", ad.getId());

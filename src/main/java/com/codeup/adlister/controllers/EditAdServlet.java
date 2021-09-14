@@ -15,10 +15,13 @@ public class EditAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         long id = Long.parseLong(request.getParameter("id"));
         Ad ad = DaoFactory.getAdsDao().getAd(id);
+        User userlog = (User) request.getSession().getAttribute("user");
         if (request.getSession().getAttribute("user") == null) {
             request.getSession().setAttribute("intendedpage", "profile");
             response.sendRedirect("/login");
             return;
+        } else if (!request.getParameter("uid").equals(userlog.getUsername())) {
+            response.sendRedirect("/ads");
         } else if (ad == null) {
             response.sendRedirect("/ads");
         } else {

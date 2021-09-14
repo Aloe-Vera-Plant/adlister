@@ -3,7 +3,7 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Viewing All The Ads" />
+        <jsp:param name="title" value="Index of Ads" />
     </jsp:include>
 </head>
 <body>
@@ -17,7 +17,7 @@
 </c:choose>
 
 <div class="container">
-    <h1>Here is a listing of our current ads:</h1>
+    <h3>Here is a listing of our current ads:</h3>
 
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
