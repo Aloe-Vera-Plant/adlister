@@ -12,5 +12,9 @@
         <h1>Welcome, ${sessionScope.user.username}!</h1>
     </div>
 
+    <div>
+        <a href="/ads/search">Searching for an ad?</a>
+    </div>
+
 </body>
 </html>
