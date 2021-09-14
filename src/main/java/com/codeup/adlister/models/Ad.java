@@ -3,6 +3,7 @@ package com.codeup.adlister.models;
 public class Ad {
     private long id;
     private long userId;
+    private String username;
     private String title;
     private String description;
 
@@ -47,7 +48,11 @@ public class Ad {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
