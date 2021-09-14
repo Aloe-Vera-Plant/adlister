@@ -18,7 +18,7 @@
     <form method="post" action="/ads/delete">
         <label for="adid">Ad ID:</label><br>
         <input id="adid" name="adid" readonly value="${id}"><br>
-        <label for="confirm">Are you sure you want to delete this ad? This process is irreversible.</label><br>
+
         <select name="confirm" id="confirm">
             <option value="1">Yes</option>
             <option selected value="0">No</option>
@@ -26,6 +26,9 @@
         <button type="submit" class="btn btn-danger">Delete</button>
 
     </form>
+    <div class="alert alert-danger" role="alert">
+    Warning! This process is irreversible!
+</div>
 </div>
 
 
