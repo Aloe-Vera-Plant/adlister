@@ -4,4 +4,7 @@
     .navbar {
         margin-bottom: 15px;
     }
+    button {
+        margin-top: 5px;
+    }
 </style>

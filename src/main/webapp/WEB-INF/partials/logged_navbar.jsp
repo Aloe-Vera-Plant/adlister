@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/ads/create">Home</a>
+                    <a class="nav-link active" aria-current="page" href="/ads">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/ads/create">Create Ad</a>
@@ -15,7 +15,7 @@
             </ul>
             <ul class="navbar-nav me-0 mb-2 mb-lg-0" style="margin-right: 0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account
+                    <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/profile">Profile</a></li>
