@@ -16,7 +16,11 @@
     </c:otherwise>
 </c:choose>
     <div class="container">
-        <h1>Welcome to the Adlister!</h1>
+        <div class="row d-flex justify-content-center">
+            <h1 style="justify-content: center">Welcome to the Aloe Adlister!</h1> <hr>
+            <h3 style="justify-content: center">Anything you need, we probably have!</h3>
+
+        </div>
     </div>
 <jsp:include page="/WEB-INF/partials/scripts.jsp"/>
 
