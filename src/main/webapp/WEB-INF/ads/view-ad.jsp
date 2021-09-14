@@ -24,7 +24,7 @@
         <c:if test="${user.username == username || user.username == 'admin'}">
             <div class="dropdown">
                 <a class="btn btn-danger dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: 0">
-                </a>
+                </a><hr>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li><a class="dropdown-item" href="/ads/edit-ad?id=${id}&uid=${username}">Edit</a></li>
@@ -44,9 +44,9 @@
             <p>Email: ${email}</p><%-- Not sure about this, may be privacy issue --%>
         </div>
     </div>
-    <hr>
     <div class="row">
         <p>${description}</p>
+        <hr>
     </div>
 </div>
 <jsp:include page="/WEB-INF/partials/scripts.jsp"/>
