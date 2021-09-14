@@ -10,4 +10,6 @@ public interface Users {
     User findByUsername(String username);
     User findUserById(long userId);
     Long insert(User user);
+    void updateUserInfo(String newUsername, String username, String email);
+    void updateUserPass(String newPassword, String username);
 }
