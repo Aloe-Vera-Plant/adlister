@@ -39,7 +39,7 @@ public class RegisterServlet extends HttpServlet {
                     || password.isEmpty()
                     || (!password.equals(passwordConfirmation))
                     || DaoFactory.getUsersDao().findByUsername(username) != null;
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             inputHasErrors = true;
         }

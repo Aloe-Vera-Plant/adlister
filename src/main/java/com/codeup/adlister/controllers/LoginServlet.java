@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
         User user = null;
         try {
             user = DaoFactory.getUsersDao().findByUsername(username);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
