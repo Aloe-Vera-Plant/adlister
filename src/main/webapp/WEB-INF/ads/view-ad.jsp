@@ -6,8 +6,9 @@
 <body>
     <%@include file="/WEB-INF/partials/navbar.jsp"%>
     <div class="container">
-        <h1>${param.title}</h1>
-        <p>${param.description}</p>
+        <h1>${title}</h1>
+        <p>${description}</p>
+        <p>Ad id: ${id}</p>
     </div>
 </body>
 </html>
