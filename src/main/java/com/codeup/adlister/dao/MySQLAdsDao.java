@@ -66,7 +66,8 @@ public class MySQLAdsDao implements Ads {
             rs.next();
             return extractAd(rs);
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving ad.", e);
+            // throw new RuntimeException("Error retrieving ad.", e);
+            return null;
         }
     }
 

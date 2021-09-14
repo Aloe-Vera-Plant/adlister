@@ -14,11 +14,15 @@ public class ViewAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         long id = Long.parseLong(request.getParameter("id"));
         Ad ad = DaoFactory.getAdsDao().getAd(id);
-        request.setAttribute("id", ad.getId());
-        request.setAttribute("userId", ad.getUserId());
-        request.setAttribute("title", ad.getTitle());
-        request.setAttribute("description", ad.getDescription());
-        request.getRequestDispatcher("/WEB-INF/ads/view-ad.jsp").forward(request, response);
+        if (ad == null) {
+            response.sendRedirect("/ads");
+        } else {
+            request.setAttribute("id", ad.getId());
+            request.setAttribute("userId", ad.getUserId());
+            request.setAttribute("title", ad.getTitle());
+            request.setAttribute("description", ad.getDescription());
+            request.getRequestDispatcher("/WEB-INF/ads/view-ad.jsp").forward(request, response);
+        }
     }
 
 //    @Override
