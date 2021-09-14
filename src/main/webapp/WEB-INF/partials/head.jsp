@@ -13,4 +13,7 @@
     a:hover {
         color: aqua;
     }
+    input {
+        margin: 10px;
+    }
 </style>
