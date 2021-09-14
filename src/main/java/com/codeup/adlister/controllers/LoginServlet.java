@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         User user = null;
         try {
-            user = DaoFactory.getUsersDao().findByUsername(username);
+            user = DaoFactory.getUsersDao().findByUsername(username.trim());
         } catch (Exception e) {
             e.printStackTrace();
         }
