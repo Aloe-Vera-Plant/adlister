@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Form;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 
 @WebServlet(name = "controllers.RegisterServlet", urlPatterns = "/register")
 public class RegisterServlet extends HttpServlet {
@@ -34,11 +34,9 @@ public class RegisterServlet extends HttpServlet {
         // validate input
         boolean inputHasErrors = false;
         try {
-            inputHasErrors = username.isEmpty()
-                    || email.isEmpty()
-                    || password.isEmpty()
-                    || (!password.equals(passwordConfirmation))
-                    || DaoFactory.getUsersDao().findByUsername(username) != null;
+            inputHasErrors = Form.hasEmptyInputs(new String[] {username, email, password})
+                    || Form.unconfirmedPassword(password, passwordConfirmation)
+                    || Form.usernameIsTaken(username);
         } catch (Exception e) {
             e.printStackTrace();
             inputHasErrors = true;
