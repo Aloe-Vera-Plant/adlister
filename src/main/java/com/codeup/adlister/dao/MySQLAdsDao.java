@@ -1,5 +1,6 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.Config;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
 
@@ -65,6 +66,18 @@ public class MySQLAdsDao implements Ads {
             return createAdsFromResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving all ads.", e);
+    public Ad getAd(long id) {
+        PreparedStatement stmt = null;
+        String selectQuery = "SELECT * FROM ads where id = ?";
+        try {
+            stmt = connection.prepareStatement(selectQuery);
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            return extractAd(rs);
+        } catch (SQLException e) {
+            // throw new RuntimeException("Error retrieving ad.", e);
+            return null;
         }
     }
 
@@ -83,5 +96,33 @@ public class MySQLAdsDao implements Ads {
             ads.add(extractAd(rs));
         }
         return ads;
+    }
+
+    public void editAdById(long id, String title, String description) {
+        PreparedStatement pstm = null;
+        String updateQuery = "UPDATE ads SET title = ?, description = ? WHERE id = ?";
+        try {
+            pstm = connection.prepareStatement(updateQuery);
+            pstm.setString(1, title);
+            pstm.setString(2, description);
+            pstm.setLong(3, id);
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteAdById(long id) {
+        PreparedStatement pstm = null;
+        String updateQuery = "DELETE FROM ads WHERE id = ?";
+        try {
+            pstm = connection.prepareStatement(updateQuery);
+            pstm.setLong(1, id);
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

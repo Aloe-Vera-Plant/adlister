@@ -3,13 +3,26 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Welcome to my site!" />
+        <jsp:param name="title" value="AloeAdlister" />
     </jsp:include>
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<c:choose>
+    <c:when test="${user != null}">
+        <jsp:include page="/WEB-INF/partials/logged_navbar.jsp"/>
+    </c:when>
+    <c:otherwise>
+        <jsp:include page="/WEB-INF/partials/default_navbar.jsp"/>
+    </c:otherwise>
+</c:choose>
     <div class="container">
-        <h1>Welcome to the Adlister!</h1>
+        <div class="row d-flex justify-content-center">
+            <h1 style="justify-content: center">Welcome to the Aloe Adlister!</h1> <hr>
+            <h3 style="justify-content: center">Anything you need, we probably have!</h3>
+
+        </div>
     </div>
+<jsp:include page="/WEB-INF/partials/scripts.jsp"/>
+
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Form;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +17,7 @@ public class CreateAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         if (request.getSession().getAttribute("user") == null) {
+            request.getSession().setAttribute("intendedpage", "ads/create");
             response.sendRedirect("/login");
             return;
         }
@@ -26,12 +28,13 @@ public class CreateAdServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User currentUser = (User) request.getSession().getAttribute("user");
-
-        Ad ad = new Ad(
-            currentUser.getId(),
-            request.getParameter("title"),
-            request.getParameter("description")
-        );
+        String title = request.getParameter("title");
+        String description = request.getParameter("description");
+        if (Form.hasEmptyInputs(new String[] {title, description})) {
+            response.sendRedirect("/ads/create");
+            return;
+        }
+        Ad ad = new Ad(currentUser.getId(), title, description);
         DaoFactory.getAdsDao().insert(ad);
         response.sendRedirect("/ads");
     }
