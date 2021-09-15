@@ -55,6 +55,8 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    // commit
+
     @Override
     public List<Ad> search(String searchTerm) {
         PreparedStatement stmt = null;
