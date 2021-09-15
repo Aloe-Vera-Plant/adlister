@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Form;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -24,12 +25,17 @@ public class UpdateProfileServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
+        if (request.getSession().getAttribute("updateError") != null) {
+            request.setAttribute("error", request.getSession().getAttribute("updateError"));
+            System.out.println("Update username error alerted.");
+        }
 
         request.setAttribute("username", userlog.getUsername());
         request.setAttribute("email", userlog.getEmail());
 
         request.getRequestDispatcher("/WEB-INF/update-profile.jsp").forward(request, response);
         request.removeAttribute("success");
+        request.removeAttribute("error");
 
     }
 
@@ -41,10 +47,17 @@ public class UpdateProfileServlet extends HttpServlet {
         String newUsername = request.getParameter("username");
         String newEmail = request.getParameter("email");
 
-        DaoFactory.getUsersDao().updateUserInfo(newUsername, newEmail, currentUser.getUsername());
-        currentUser.setEmail(newEmail);
-        currentUser.setUsername(newUsername);
-       request.getSession().setAttribute("user", currentUser);
-        response.sendRedirect("/profile");
+        boolean invalidInput = Form.usernameIsTaken(newUsername);
+
+        if (invalidInput) {
+            request.getSession().setAttribute("updateError", "That username is taken.");
+            response.sendRedirect("/update-profile");
+        } else {
+            DaoFactory.getUsersDao().updateUserInfo(newUsername, newEmail, currentUser.getUsername());
+            currentUser.setEmail(newEmail);
+            currentUser.setUsername(newUsername);
+            request.getSession().setAttribute("user", currentUser);
+            response.sendRedirect("/profile");
+        }
     }
 }

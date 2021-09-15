@@ -13,11 +13,11 @@ import java.io.IOException;
 @WebServlet(name = "controllers.SearchDisplayServlet", urlPatterns = "/ads/search/display")
 public class SearchDisplayServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        if (request.getSession().getAttribute("user") == null) {
-            response.sendRedirect("/login");
-            return;
-        }
+//
+//        if (request.getSession().getAttribute("user") == null) {
+//            response.sendRedirect("/login");
+//            return;
+//        }
         String adToSearchFor = request.getParameter("adToSearchFor");
         request.setAttribute("ads", DaoFactory.getAdsDao().search(adToSearchFor)); // <<< I think this returns a list of ads, might need to store in a variable to loop
         request.getRequestDispatcher("/WEB-INF/ads/search-form.jsp")

@@ -11,6 +11,9 @@
 <jsp:include page="partials/logged_navbar.jsp"/>
 
 <div class="container">
+    <c:if test="${error != null}">
+        <h5 style="color: lightcoral">${error}</h5>
+    </c:if>
     <form action="/update-profile" method="post">
         <h3>Edit User Info</h3>
         <div class="form-group">
