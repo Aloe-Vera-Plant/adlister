@@ -14,9 +14,9 @@ public class MySQLUsersDao implements Users {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getUrl(),
-                config.getUser(),
-                config.getPassword()
+                    config.getUrl(),
+                    config.getUser(),
+                    config.getPassword()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
@@ -68,10 +68,11 @@ public class MySQLUsersDao implements Users {
     }
 
     private User extractUser(ResultSet rs) throws SQLException {
-        if (! rs.next()) {
+        if (!rs.next()) {
             return null;
         }
         return new User(
+
             rs.getLong("id"),
             rs.getString("user_name"),
             rs.getString("email"),
@@ -107,4 +108,26 @@ public class MySQLUsersDao implements Users {
             e.printStackTrace();
         }
     }
+
+    public User findUserByIDNumber(long idNumber) {
+        String sql = "SELECT * FROM users WHERE id = ?";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, idNumber);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            return new User(
+                    resultSet.getLong("id"),
+                    resultSet.getString("user_name"),
+                    resultSet.getString("email"),
+                    resultSet.getString("password")
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException("Error @ findUserByIDNumber", e);
+        }
+    }
 }
+
+

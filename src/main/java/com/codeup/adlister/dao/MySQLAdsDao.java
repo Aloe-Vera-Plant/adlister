@@ -3,9 +3,6 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,14 +14,15 @@ public class MySQLAdsDao implements Ads {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getUrl(),
-                config.getUser(),
-                config.getPassword()
+                    config.getUrl(),
+                    config.getUser(),
+                    config.getPassword()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
         }
     }
+
 
     @Override
     public List<Ad> all() {
@@ -84,14 +82,33 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-    private Ad extractAd(ResultSet rs) throws SQLException {
-        return new Ad(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
-            rs.getString("title"),
-            rs.getString("description")
-        );
+    public List<Ad> searchAdsByUserID(long userID) {
+
+
+        try {
+            String sql = "SELECT * FROM ads WHERE user_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, userID);
+
+            ResultSet resultSet = statement.executeQuery();
+            return createAdsFromResults(resultSet);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error @ searchAdsByUserID", e);
+        }
     }
+
+    private Ad extractAd(ResultSet rs) throws SQLException {
+        Ad ad = new Ad(
+                rs.getLong("id"),
+                rs.getLong("user_id"),
+                rs.getString("title"),
+                rs.getString("description")
+        );
+
+    ad.setUsername(getUsernameFromID(ad.getUserId()));
+
+        return ad;
+}
 
     private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
         List<Ad> ads = new ArrayList<>();
@@ -100,6 +117,7 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
 
     public void editAdById(long id, String title, String description) {
         PreparedStatement pstm = null;
@@ -127,5 +145,29 @@ public class MySQLAdsDao implements Ads {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getUsernameFromID (long idNumber) {
+        String sql = "SELECT username " +
+                "FROM users " +
+                "JOIN ads ON users.id = ads.user_id " +
+                "WHERE user_id = ?";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, idNumber);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if(resultSet.next()) {
+                return resultSet.getString("username");
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error @ getUsernameFromID.", e);
+        }
+
+
     }
 }

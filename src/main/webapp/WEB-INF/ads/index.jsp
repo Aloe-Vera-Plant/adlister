@@ -34,6 +34,8 @@
         <div class="col-md-6">
             <h2><a href="/view-ad?id=${ad.id}">${ad.title}</a></h2>
             <p>${ad.description}</p>
+            <p>ID#: <c:out value="${ad.id}"></c:out></p>
+            <h5>Posted by: <c:out value="${ad.username}"></c:out></h5>
         </div>
     </c:forEach>
 </div>
