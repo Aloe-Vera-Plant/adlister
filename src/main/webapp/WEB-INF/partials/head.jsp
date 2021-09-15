@@ -20,4 +20,14 @@
         margin-top: 0;
         margin-bottom: 0;
     }
+
+    .centered {
+        display: flex;
+        justify-content: center;
+    }
+
+    img {
+        height: 75%;
+        width: 75%;
+    }
 </style>

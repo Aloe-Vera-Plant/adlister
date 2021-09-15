@@ -5,6 +5,7 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="AloeAdlister" />
     </jsp:include>
+
 </head>
 <body>
 <c:choose>
@@ -16,11 +17,16 @@
     </c:otherwise>
 </c:choose>
     <div class="container">
-        <div class="row d-flex justify-content-center">
-            <h1 style="justify-content: center">Welcome to the Aloe Adlister!</h1> <hr>
-            <h3 style="justify-content: center">Anything you need, we probably have!</h3>
+        <div class="row centered">
+            <h1 class="centered" style="justify-content: center">Welcome to the Aloe Adlister!</h1> <hr>
+            <h3 class="centered" style="justify-content: center">Anything you need, we probably have! Anything, anywhere!</h3>
 
         </div>
+
+        <div class="row justify-content-center">
+            <img src="http://www.clker.com/cliparts/r/N/5/b/3/s/world-map-transparent-hi.png">
+        </div>
+
     </div>
 <jsp:include page="/WEB-INF/partials/scripts.jsp"/>
 
