@@ -12,4 +12,6 @@ public interface Users {
     Long insert(User user);
     void updateUserInfo(String newUsername, String username, String email);
     void updateUserPass(String newPassword, String username);
+    User findUserByIDNumber(long idNumber);
+
 }

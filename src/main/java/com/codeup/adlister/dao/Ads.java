@@ -13,6 +13,6 @@ public interface Ads {
     Ad getAd(long id);
     //edit ad
     public void editAdById(long id, String title, String description);
-
     public void deleteAdById(long id);
+    List<Ad> searchAdsByUserID(long userID);
 }

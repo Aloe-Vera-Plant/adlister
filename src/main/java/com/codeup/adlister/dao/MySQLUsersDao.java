@@ -1,6 +1,5 @@
 package com.codeup.adlister.dao;
 
-import com.codeup.adlister.Config;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
 import com.mysql.cj.jdbc.Driver;
@@ -14,9 +13,9 @@ public class MySQLUsersDao implements Users {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getUrl(),
-                config.getUser(),
-                config.getPassword()
+                    config.getUrl(),
+                    config.getUser(),
+                    config.getPassword()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
@@ -68,14 +67,14 @@ public class MySQLUsersDao implements Users {
     }
 
     private User extractUser(ResultSet rs) throws SQLException {
-        if (! rs.next()) {
+        if (!rs.next()) {
             return null;
         }
         return new User(
-            rs.getLong("id"),
-            rs.getString("username"),
-            rs.getString("email"),
-            rs.getString("password")
+                rs.getLong("id"),
+                rs.getString("username"),
+                rs.getString("email"),
+                rs.getString("password")
         );
     }
 
@@ -107,4 +106,26 @@ public class MySQLUsersDao implements Users {
             e.printStackTrace();
         }
     }
+
+    public User findUserByIDNumber(long idNumber) {
+        String sql = "SELECT * FROM users WHERE id = ?";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, idNumber);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            return new User(
+                    resultSet.getLong("id"),
+                    resultSet.getString("username"),
+                    resultSet.getString("email"),
+                    resultSet.getString("password")
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException("Error @ findUserByIDNumber", e);
+        }
+    }
 }
+
+
