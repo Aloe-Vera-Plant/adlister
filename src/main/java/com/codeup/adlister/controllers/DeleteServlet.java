@@ -21,7 +21,7 @@ public class DeleteServlet extends HttpServlet {
             request.getSession().setAttribute("intendedpage", "profile");
             response.sendRedirect("/login");
             return;
-        } else if (!request.getParameter("uid").equals(userlog.getUsername())) {
+        } else if (!request.getParameter("uid").equals(userlog.getUsername()) && !userlog.getUsername().equals("admin")) {
             response.sendRedirect("/ads");
         } if (ad == null) {
             response.sendRedirect("/ads");
