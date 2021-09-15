@@ -15,6 +15,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/ads/create">Create Ad</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ads/search">Search</a>
+                </li>
             </ul>
             <ul class="navbar-nav me-0 mb-2 mb-lg-0" style="margin-right: 0">
                 <li class="nav-item dropdown">

@@ -18,7 +18,7 @@
         <h3>Your posted ads:</h3>
         <c:forEach var="ad" items="${ads}">
             <div class="col-md-6">
-                <h2><c:out value="${ad.title}"></c:out></h2>
+                <h2><a href="/view-ad?id=${ad.id}"><c:out value="${ad.title}"></c:out></a></h2>
                 <p><c:out value="${ad.description}"></c:out></p>
                 <p>ID#: <c:out value="${ad.id}"></c:out></p>
                 <h5>Posted by: <c:out value="${ad.username}"></c:out></h5>

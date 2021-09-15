@@ -148,7 +148,7 @@ public class MySQLAdsDao implements Ads {
     }
 
     public String getUsernameFromID (long idNumber) {
-        String sql = "SELECT username " +
+        String sql = "SELECT user_name " +
                 "FROM users " +
                 "JOIN ads ON users.id = ads.user_id " +
                 "WHERE user_id = ?";
@@ -160,7 +160,7 @@ public class MySQLAdsDao implements Ads {
             ResultSet resultSet = statement.executeQuery();
 
             if(resultSet.next()) {
-                return resultSet.getString("username");
+                return resultSet.getString("user_name");
             } else {
                 return null;
             }
