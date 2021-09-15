@@ -1,6 +1,6 @@
 package com.codeup.adlister.dao;
 
-import com.codeup.adlister.Config;
+
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
 import com.mysql.cj.jdbc.Driver;
@@ -26,7 +26,7 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public User findByUsername(String username) {
-        String query = "SELECT * FROM users WHERE username = ? LIMIT 1";
+        String query = "SELECT * FROM users WHERE user_name = ? LIMIT 1";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, username);
@@ -50,7 +50,7 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public Long insert(User user) {
-        String query = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
+        String query = "INSERT INTO users(user_name, email, password) VALUES (?, ?, ?)";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -73,7 +73,7 @@ public class MySQLUsersDao implements Users {
         }
         return new User(
             rs.getLong("id"),
-            rs.getString("username"),
+            rs.getString("user_name"),
             rs.getString("email"),
             rs.getString("password")
         );
@@ -82,7 +82,7 @@ public class MySQLUsersDao implements Users {
     @Override
     public void updateUserInfo(String usernameUp, String email, String currentUsername) {
         try {
-            PreparedStatement pstm = connection.prepareStatement("UPDATE users SET username = ?, email = ? WHERE username = ?");
+            PreparedStatement pstm = connection.prepareStatement("UPDATE users SET user_name = ?, email = ? WHERE user_name = ?");
             pstm.setString(1, usernameUp);
             pstm.setString(2, email);
             pstm.setString(3, currentUsername);
@@ -98,7 +98,7 @@ public class MySQLUsersDao implements Users {
 
         try {
 
-            PreparedStatement pstm = connection.prepareStatement("UPDATE users SET password = ? WHERE username = ?");
+            PreparedStatement pstm = connection.prepareStatement("UPDATE users SET password = ? WHERE user_name = ?");
             pstm.setString(1, newPassword);
             pstm.setString(2, username);
             pstm.executeUpdate();
