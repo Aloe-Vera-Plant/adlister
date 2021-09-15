@@ -15,4 +15,6 @@ public interface Ads {
     public void editAdById(long id, String title, String description);
 
     public void deleteAdById(long id);
+
+    List<Ad> search(String searchTerm);
 }
