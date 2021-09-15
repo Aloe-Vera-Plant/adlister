@@ -56,6 +56,8 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    // commit
+
     @Override
     public Ad getAd(long id) {
         PreparedStatement stmt = null;
