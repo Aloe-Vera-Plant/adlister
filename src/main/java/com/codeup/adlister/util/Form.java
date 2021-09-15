@@ -5,7 +5,7 @@ import com.codeup.adlister.dao.DaoFactory;
 public class Form {
     public static boolean hasEmptyInputs(String[] inputs) {
         for (int i = 0; i < inputs.length; i++) {
-            if (inputs[i].isEmpty()) return true;
+            if (inputs[i].trim().isEmpty()) return true;
         }
 
         return false;
