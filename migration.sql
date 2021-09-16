@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS ads
     user_id     int UNSIGNED NOT NULL,
     title       VARCHAR(50)  NOT NULL,
     description VARCHAR(500) NOT NULL,
+    postDate datetime not null,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
