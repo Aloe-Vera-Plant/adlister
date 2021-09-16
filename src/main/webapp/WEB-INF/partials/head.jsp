@@ -30,4 +30,18 @@
         height: 75%;
         width: 75%;
     }
+
+    .pfp {
+        border: solid cornflowerblue 2px;
+        height: 125px;
+        width: 150px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .update {
+        position: fixed;
+        top: 20%;
+        right:60%;
+    }
 </style>

@@ -11,7 +11,7 @@
         <jsp:include page="../partials/logged_navbar.jsp"/>
 
     <div class="container">
-        <h1>Create a new Ad</h1>
+        <h1>Create New Ad</h1>
         <form action="/ads/create" method="post">
             <div class="form-group">
                 <label for="title">Title</label>

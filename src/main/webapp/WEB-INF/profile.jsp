@@ -18,18 +18,25 @@
         <div class="col-6">
 
             <h1>Welcome, ${sessionScope.user.username}!</h1>
+
             <hr>
-            <div class="dropdown">
-                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: 0"> +
-                </a><hr>
 
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="/update-profile">Update Profile</a></li>
+                <img class="pfp" src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg">
+<div class="container">
+    <div class="dropdown update">
+        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+           data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: 0"> +
+        </a>
 
-                </ul>
-                <h4>Current contact info: ${sessionScope.user.email}</h4>
-            </div>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item" href="/update-profile">Update Profile</a></li>
 
+        </ul>
+
+    </div>
+</div>
+
+            <h4>Current contact info: ${sessionScope.user.email}</h4>
 
         </div>
         <div class="col-6">
