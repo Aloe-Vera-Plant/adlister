@@ -13,10 +13,15 @@
     <div class="container">
         <h1>Create a new Ad</h1>
         <form action="/ads/create" method="post">
-           <form action="https://request-inspector.glitch.me/" method="post">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input id="title" name="title" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+                <input type="checkbox" name="categories1" value="1">Goods</input>
+                <input type="checkbox" name="categories2" value="2">Services</input>
+                <input type="checkbox" name="categories3" value="3">Jobs</input>
+                <input type="checkbox" name="categories4" value="4">Personals</input>
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
@@ -24,7 +29,7 @@
             </div>
             <input type="submit" class="btn btn-block btn-primary">
         </form>
-    </div>
+        </div>
 <jsp:include page="/WEB-INF/partials/scripts.jsp"/>
 
 </body>

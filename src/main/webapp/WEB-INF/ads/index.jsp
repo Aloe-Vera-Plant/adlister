@@ -41,6 +41,7 @@
             <h2 class="custer"><a href="/view-ad?id=${ad.id}">${ad.title}</a></h2>
             <p class="cluster">ID#: <c:out value="${ad.id}"></c:out></p>
             <p class="cluster">Posted at: ${ad.date}</p>
+            <p class="cluster">${ad.categories}</p>
             <p class="cluster">Posted by: <c:out value="${ad.username}"></c:out></p>
             <p class="cluster">${ad.description}</p>
 
