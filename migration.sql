@@ -2,6 +2,16 @@
 
 CREATE DATABASE IF NOT EXISTS adlisterdb;
 USE adlisterdb;
+
+CREATE TABLE IF NOT EXISTS users
+(
+    id        INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_name VARCHAR(100) NOT NULL,
+    email     VARCHAR(100) NOT NULL,
+    password  VARCHAR(100) NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE (user_name)
+);
 CREATE TABLE IF NOT EXISTS ads
 (
     id          int UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -26,14 +36,4 @@ CREATE TABLE IF NOT EXISTS ads_categories
     category_id INT UNSIGNED NOT NULL,
     FOREIGN KEY (ad_id) REFERENCES ads (id),
     FOREIGN KEY (category_id) REFERENCES categories (id)
-);
-
-CREATE TABLE IF NOT EXISTS users
-(
-    id        INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    user_name VARCHAR(100) NOT NULL,
-    email     VARCHAR(100) NOT NULL,
-    password  VARCHAR(100) NOT NULL,
-    PRIMARY KEY (id),
-    UNIQUE (user_name)
 );
