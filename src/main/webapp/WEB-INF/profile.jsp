@@ -38,6 +38,7 @@
                 <div class="col-md-6">
                     <h2><a href="/view-ad?id=${ad.id}"><c:out value="${ad.title}"></c:out></a></h2>
                     <p class="cluster">Posted at: ${ad.date}</p>
+                    <p class="cluster">${ad.categories}</p>
                     <p class="cluster">ID#: <c:out value="${ad.id}"></c:out></p>
                     <p class="cluster">Listed by: <c:out value="${ad.username}"></c:out></p>
                     <hr>

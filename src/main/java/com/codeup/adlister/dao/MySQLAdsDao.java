@@ -2,6 +2,7 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
 
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +41,41 @@ public class MySQLAdsDao implements Ads {
             return rs.getLong(1);
         } catch (SQLException e) {
             throw new RuntimeException("Error creating a new ad.", e);
+        }
+    }
+
+    @Override
+    public void insertIntoAdsCats(String selectedCat, long id) {
+
+            try {
+                Statement stm = connection.createStatement();
+                stm.executeUpdate("INSERT INTO ads_categories(ad_id, category_id) VALUES (" + id + ", " + Integer.valueOf(selectedCat) + " )");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Ad category insertion failed!");
+            }
+
+    }
+
+    @Override
+    public void getCatNamesByAdId(Ad ad) {
+        try {
+            Statement stm = connection.createStatement();
+            List<String> catIds = new ArrayList<>();
+
+            ResultSet rs1 = stm.executeQuery("SELECT * FROM ads_categories WHERE ad_id = " + ad.getId());
+            while (rs1.next()) {
+                catIds.add(rs1.getString("category_id"));
+            }
+            for (String catId : catIds) {
+                ResultSet rs = stm.executeQuery("SELECT * FROM categories WHERE id = " + catId);
+                while (rs.next()) {
+                    ad.categories.add(rs.getString("name"));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -87,6 +123,19 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    @Override
+    public String getCategoryByID(int catid) {
+        String catName = "";
+        try {
+            Statement stm = connection.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM categories WHERE id = '" + catid + "'");
+            catName = rs.getString("name");
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return catName;
+    }
+
     private Ad extractAd(ResultSet rs) throws SQLException {
         Ad ad = new Ad(
                 rs.getLong("id"),
@@ -95,6 +144,8 @@ public class MySQLAdsDao implements Ads {
                 rs.getString("description"),
                 rs.getString("postDate")
         );
+
+        DaoFactory.getAdsDao().getCatNamesByAdId(ad);
 
     ad.setUsername(getUsernameFromID(ad.getUserId()));
 
@@ -138,7 +189,7 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-    public String getUsernameFromID (long idNumber) {
+    public String getUsernameFromID (long idNumber) throws SQLException {
         String sql = "SELECT user_name " +
                 "FROM users " +
                 "JOIN ads ON users.id = ads.user_id " +
@@ -160,5 +211,6 @@ public class MySQLAdsDao implements Ads {
         }
 
 
+        }
+
     }
-}

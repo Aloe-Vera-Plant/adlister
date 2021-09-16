@@ -35,7 +35,26 @@ public class CreateAdServlet extends HttpServlet {
             return;
         }
         Ad ad = new Ad(currentUser.getId(), title, description);
-        DaoFactory.getAdsDao().insert(ad);
+
+        ad.setId(DaoFactory.getAdsDao().insert(ad));
+
+        String valueOf = "";
+        if (request.getParameter("categories1") != null) {
+            valueOf = request.getParameter("categories1");
+            DaoFactory.getAdsDao().insertIntoAdsCats(valueOf, ad.getId());
+        }
+        if (request.getParameter("categories2") != null) {
+            valueOf = request.getParameter("categories2");
+            DaoFactory.getAdsDao().insertIntoAdsCats(valueOf, ad.getId());        }
+        if (request.getParameter("categories3") != null) {
+            valueOf = request.getParameter("categories3");
+            DaoFactory.getAdsDao().insertIntoAdsCats(valueOf, ad.getId());        }
+        if (request.getParameter("categories4") != null) {
+            valueOf = request.getParameter("categories4");
+            DaoFactory.getAdsDao().insertIntoAdsCats(valueOf, ad.getId());
+        }
+
+
         response.sendRedirect("/ads");
     }
 }
