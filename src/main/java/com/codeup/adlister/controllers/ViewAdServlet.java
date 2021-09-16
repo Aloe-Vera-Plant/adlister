@@ -22,6 +22,7 @@ public class ViewAdServlet extends HttpServlet {
             request.setAttribute("userId", ad.getUserId());
             request.setAttribute("title", ad.getTitle());
             request.setAttribute("description", ad.getDescription());
+            request.setAttribute("img", ad.getImage());
             User user = DaoFactory.getUsersDao().findUserById(ad.getUserId());
             request.setAttribute("username", user.getUsername());
             request.setAttribute("email", user.getEmail());

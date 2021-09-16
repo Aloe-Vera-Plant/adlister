@@ -32,7 +32,10 @@
         <div class="col-md-6">
             <h2 class="custer"><a href="/view-ad?id=${ad.id}">${ad.title}</a></h2>
             <p class="cluster">ID#: <c:out value="${ad.id}"></c:out></p>
-            <hp>Posted by: <c:out value="${ad.username}"></c:out></hp>
+            <div class="row">
+                <img class="indexPage" src="${ad.image}">
+                <hr>
+                <hp>Posted by: <c:out value="${ad.username}"></c:out></hp>
             <p class="cluster">${ad.description}</p>
 
 

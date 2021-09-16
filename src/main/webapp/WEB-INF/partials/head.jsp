@@ -26,8 +26,18 @@
         justify-content: center;
     }
 
-    img {
+    .homePage {
         height: 75%;
         width: 75%;
+    }
+
+    .viewPage {
+        height: 25%;
+        width: 25%;
+    }
+
+    .indexPage {
+        height: 30%;
+        width: 30%;
     }
 </style>

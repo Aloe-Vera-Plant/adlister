@@ -12,7 +12,7 @@ public interface Ads {
     // get individual ad based on passed id
     Ad getAd(long id);
     //edit ad
-    public void editAdById(long id, String title, String description);
+    public void editAdById(long id, String title, String description, String image);
     public void deleteAdById(long id);
 
     List<Ad> searchAdsByUserID(long userID);

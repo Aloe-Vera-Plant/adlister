@@ -20,6 +20,10 @@
             <label for="title">Title</label>
             <input id="title" name="title" class="form-control" type="text" value="<c:out value="${title}"/>">
         </div>
+        <div>
+            <label for="img">Include image link:</label>
+            <input type="text" id="img" name="img">
+        </div>
         <div class="form-group">
             <label for="description">Description</label>
             <textarea id="description" name="description" class="form-control" type="text"><c:out value="${description}"/></textarea>

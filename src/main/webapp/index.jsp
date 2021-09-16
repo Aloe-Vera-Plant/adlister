@@ -24,7 +24,7 @@
         </div>
 
         <div class="row justify-content-center">
-            <img src="http://www.clker.com/cliparts/r/N/5/b/3/s/world-map-transparent-hi.png">
+            <img class="homePage" src="http://www.clker.com/cliparts/r/N/5/b/3/s/world-map-transparent-hi.png">
         </div>
 
     </div>

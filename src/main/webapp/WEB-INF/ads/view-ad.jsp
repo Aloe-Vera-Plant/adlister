@@ -45,6 +45,10 @@
         </div>
     </div>
     <div class="row">
+        <img class="viewPage" src="${img}">
+        <hr>
+    </div>
+    <div class="row">
         <p>${description}</p>
         <hr>
     </div>

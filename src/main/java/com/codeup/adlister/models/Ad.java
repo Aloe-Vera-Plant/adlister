@@ -6,17 +6,20 @@ public class Ad {
     private String username;
     private String title;
     private String description;
+    private String image;
 
-    public Ad(long id, long userId, String title, String description) {
+    public Ad(long id, long userId, String title, String description, String image) {
         this.id = id;
         this.userId = userId;
         this.title = title;
+        this.image = image;
         this.description = description;
     }
 
-    public Ad(long userId, String title, String description) {
+    public Ad(long userId, String title, String description, String image) {
         this.userId = userId;
         this.title = title;
+        this.image = image;
         this.description = description;
     }
 
@@ -54,5 +57,13 @@ public class Ad {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
