@@ -17,8 +17,8 @@ CREATE TABLE IF NOT EXISTS ads
     id          int UNSIGNED NOT NULL AUTO_INCREMENT,
     user_id     int UNSIGNED NOT NULL,
     title       VARCHAR(50)  NOT NULL,
-    description VARCHAR(500) NOT NULL,
-    postDate datetime not null,
+    description text NOT NULL,
+    postDate datetime not null DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
