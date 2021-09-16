@@ -32,6 +32,7 @@ public class UpdateProfileServlet extends HttpServlet {
 
         request.setAttribute("username", userlog.getUsername());
         request.setAttribute("email", userlog.getEmail());
+        request.setAttribute("pfp", userlog.pfp);
 
         request.getRequestDispatcher("/WEB-INF/update-profile.jsp").forward(request, response);
         request.removeAttribute("success");
@@ -46,18 +47,16 @@ public class UpdateProfileServlet extends HttpServlet {
 
         String newUsername = request.getParameter("username");
         String newEmail = request.getParameter("email");
+        String newPfp = request.getParameter("pfp");
 
         boolean invalidInput = Form.usernameIsTaken(newUsername);
 
-        if (invalidInput) {
-            request.getSession().setAttribute("updateError", "That username is taken.");
-            response.sendRedirect("/update-profile");
-        } else {
-            DaoFactory.getUsersDao().updateUserInfo(newUsername, newEmail, currentUser.getUsername());
+
+            DaoFactory.getUsersDao().updateUserInfo(newEmail, newPfp, currentUser.getUsername());
             currentUser.setEmail(newEmail);
             currentUser.setUsername(newUsername);
             request.getSession().setAttribute("user", currentUser);
             response.sendRedirect("/profile");
-        }
+
     }
 }

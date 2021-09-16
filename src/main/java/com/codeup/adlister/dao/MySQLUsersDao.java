@@ -63,19 +63,21 @@ public class MySQLUsersDao implements Users {
         }
         return new User(
 
-            rs.getLong("id"),
-            rs.getString("user_name"),
-            rs.getString("email"),
-            rs.getString("password")
+                rs.getLong("id"),
+                rs.getString("user_name"),
+                rs.getString("email"),
+                rs.getString("password"),
+                rs.getString("pfp")
         );
     }
 
     @Override
-    public void updateUserInfo(String usernameUp, String email, String currentUsername) {
+    public void updateUserInfo(String email, String pfp, String currentUsername) {
         try {
-            PreparedStatement pstm = connection.prepareStatement("UPDATE users SET user_name = ?, email = ? WHERE user_name = ?");
-            pstm.setString(1, usernameUp);
-            pstm.setString(2, email);
+            PreparedStatement pstm = connection.prepareStatement("UPDATE users SET email = ?, pfp = ? WHERE user_name = ?");
+
+            pstm.setString(1, email);
+            pstm.setString(2, pfp);
             pstm.setString(3, currentUsername);
             pstm.executeUpdate();
         } catch (SQLException e) {
@@ -112,7 +114,8 @@ public class MySQLUsersDao implements Users {
                     resultSet.getLong("id"),
                     resultSet.getString("user_name"),
                     resultSet.getString("email"),
-                    resultSet.getString("password")
+                    resultSet.getString("password"),
+                    resultSet.getString("pfp")
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error @ findUserByIDNumber", e);
