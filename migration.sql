@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS users
     user_name VARCHAR(100) NOT NULL,
     email     VARCHAR(100) NOT NULL,
     password  VARCHAR(100) NOT NULL,
+    pfp varchar(250) default 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg',
     PRIMARY KEY (id),
     UNIQUE (user_name)
 );
