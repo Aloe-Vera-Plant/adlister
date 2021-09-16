@@ -37,3 +37,8 @@ CREATE TABLE IF NOT EXISTS ads_categories
     FOREIGN KEY (ad_id) REFERENCES ads (id),
     FOREIGN KEY (category_id) REFERENCES categories (id)
 );
+
+INSERT INTO categories set name = 'Goods';
+INSERT INTO categories set name = 'Services';
+INSERT INTO categories set name = 'Jobs';
+INSERT INTO categories set name = 'Personals';
