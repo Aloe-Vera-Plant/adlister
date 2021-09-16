@@ -6,12 +6,22 @@ public class Ad {
     private String username;
     private String title;
     private String description;
+    private String date;
 
-    public Ad(long id, long userId, String title, String description) {
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Ad(long id, long userId, String title, String description, String date) {
         this.id = id;
         this.userId = userId;
         this.title = title;
         this.description = description;
+        this.date = date;
     }
 
     public Ad(long userId, String title, String description) {

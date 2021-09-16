@@ -27,8 +27,9 @@
             <c:forEach var="ad" items="${ads}">
                 <div class="col-md-6">
                     <h2><a href="/view-ad?id=${ad.id}"><c:out value="${ad.title}"></c:out></a></h2>
-                    <p style="margin-bottom: 0px">ID#: <c:out value="${ad.id}"></c:out></p>
-                    <p style="margin-top: 1px">Listed by: <c:out value="${ad.username}"></c:out></p>
+                    <p class="cluster">Posted at: ${ad.date}</p>
+                    <p class="cluster">ID#: <c:out value="${ad.id}"></c:out></p>
+                    <p class="cluster">Listed by: <c:out value="${ad.username}"></c:out></p>
                     <hr>
                     <p><c:out value="${ad.description}"></c:out></p>
 

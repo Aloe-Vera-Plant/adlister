@@ -28,6 +28,7 @@
             <c:forEach var="ad" items="${ads}">
                 <h3>
                     <a href="/view-ad?id=${ad.id}">${ad.title}</a>
+                    <p class="cluster">Posted at: ${ad.date}</p>
                     <small>${ad.description}</small>
                 </h3>
             </c:forEach>
