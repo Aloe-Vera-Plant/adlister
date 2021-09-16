@@ -19,7 +19,11 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/profile");
             return;
         }
+        if (request.getSession().getAttribute("registered") != null) {
+            request.setAttribute("registered", true);
+        }
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+        request.getSession().removeAttribute("registered");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -45,7 +49,7 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("user", user);
             if (request.getSession().getAttribute("intendedpage") != null) {
                 String direction = (String) request.getSession().getAttribute("intendedpage");
-                response.sendRedirect("/"+direction);
+                response.sendRedirect("/" + direction);
             } else {
                 response.sendRedirect("/profile");
             }
