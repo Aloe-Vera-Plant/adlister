@@ -5,6 +5,8 @@ public class User {
     private String username;
     private String email;
     private String password;
+    public String pfp;
+
 
     public User() {}
 
@@ -12,6 +14,8 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.pfp = "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg";
+
     }
 
     public User(long id, String username, String email, String password) {
@@ -19,6 +23,8 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.pfp = "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg";
+
     }
 
     public long getId() {

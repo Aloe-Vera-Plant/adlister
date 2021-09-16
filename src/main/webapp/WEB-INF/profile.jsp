@@ -21,7 +21,7 @@
 
             <hr>
 
-                <img class="pfp" src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg">
+                <img class="pfp" src="${profilepic}">
 <div class="container">
     <div class="dropdown update">
         <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
