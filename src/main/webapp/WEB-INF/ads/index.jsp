@@ -37,7 +37,7 @@
 
 
     <c:forEach var="ad" items="${ads}">
-        <div class="col-md-6">
+        <div class="col-md-10">
             <h2 class="custer"><a href="/view-ad?id=${ad.id}">${ad.title}</a></h2>
             <p class="cluster">ID#: <c:out value="${ad.id}"></c:out></p>
 
