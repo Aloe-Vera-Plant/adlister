@@ -29,6 +29,7 @@ public class EditAdServlet extends HttpServlet {
             request.setAttribute("userId", ad.getUserId());
             request.setAttribute("title", ad.getTitle());
             request.setAttribute("description", ad.getDescription());
+            request.setAttribute("img", ad.getImage());
             User user = DaoFactory.getUsersDao().findUserById(ad.getUserId());
             request.setAttribute("username", user.getUsername());
             request.setAttribute("email", user.getEmail());
@@ -46,7 +47,8 @@ public class EditAdServlet extends HttpServlet {
         Ad ad = new Ad(
                 currentUser.getId(),
                 request.getParameter("title"),
-                request.getParameter("description")
+                request.getParameter("description"),
+                request.getParameter("img")
         );
 
         String adidString = request.getParameter("adid").trim();
@@ -54,7 +56,7 @@ public class EditAdServlet extends HttpServlet {
         Long adid = Long.parseLong(adidString);
 
         try {
-            DaoFactory.getAdsDao().editAdById(adid, ad.getTitle(), ad.getDescription());
+            DaoFactory.getAdsDao().editAdById(adid, ad.getTitle(), ad.getDescription(), ad.getImage());
             response.sendRedirect("/view-ad?id=" + adid);
         } catch (Exception e) {
             response.sendRedirect("/ads");

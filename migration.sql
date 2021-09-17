@@ -1,3 +1,4 @@
+drop database if exists adlisterdb;
 
 
 CREATE DATABASE IF NOT EXISTS adlisterdb;
@@ -18,6 +19,7 @@ CREATE TABLE IF NOT EXISTS ads
     id          int UNSIGNED NOT NULL AUTO_INCREMENT,
     user_id     int UNSIGNED NOT NULL,
     title       VARCHAR(50)  NOT NULL,
+    image         varchar(255),
     description text NOT NULL,
     postDate datetime not null DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
@@ -33,11 +35,12 @@ CREATE TABLE IF NOT EXISTS categories
 
 CREATE TABLE IF NOT EXISTS ads_categories
 (
-    ad_id   INT UNSIGNED NOT NULL,
+    ad_id       INT UNSIGNED NOT NULL,
     category_id INT UNSIGNED NOT NULL,
     FOREIGN KEY (ad_id) REFERENCES ads (id),
     FOREIGN KEY (category_id) REFERENCES categories (id)
 );
+
 
 INSERT INTO categories set name = 'Goods';
 INSERT INTO categories set name = 'Services';

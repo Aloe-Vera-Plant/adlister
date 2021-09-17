@@ -10,8 +10,10 @@ public class Ad {
     private String username;
     private String title;
     private String description;
+    private String image;
     private String date;
     public List<String> categories;
+
 
     public List<String> getCategories() {
         return categories;
@@ -29,18 +31,20 @@ public class Ad {
         this.date = date;
     }
 
-    public Ad(long id, long userId, String title, String description, String date) {
+    public Ad(long id, long userId, String title, String description, String image, String date) {
         this.id = id;
         this.userId = userId;
         this.title = title;
+        this.image = image;
         this.description = description;
         this.date = date;
         this.categories = new ArrayList<>();
     }
 
-    public Ad(long userId, String title, String description) {
+    public Ad(long userId, String title, String description, String image) {
         this.userId = userId;
         this.title = title;
+        this.image = image;
         this.description = description;
     }
 
@@ -78,5 +82,13 @@ public class Ad {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
