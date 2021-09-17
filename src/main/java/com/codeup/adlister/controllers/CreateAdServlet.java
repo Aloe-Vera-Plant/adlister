@@ -23,7 +23,7 @@ public class CreateAdServlet extends HttpServlet {
         }
 
         request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
-            .forward(request, response);
+                .forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -31,12 +31,36 @@ public class CreateAdServlet extends HttpServlet {
         String title = request.getParameter("title");
         String img = request.getParameter("img");
         String description = request.getParameter("description");
-        if (Form.hasEmptyInputs(new String[] {title, description})) {
+        if (Form.hasEmptyInputs(new String[]{title, description})) {
             response.sendRedirect("/ads/create");
             return;
         }
+
         Ad ad = new Ad(currentUser.getId(), title, description, img);
         DaoFactory.getAdsDao().insert(ad);
+
+
+        ad.setId(DaoFactory.getAdsDao().insert(ad));
+
+        String valueOf = "";
+        if (request.getParameter("categories1") != null) {
+            valueOf = request.getParameter("categories1");
+            DaoFactory.getAdsDao().insertIntoAdsCats(valueOf, ad.getId());
+        }
+        if (request.getParameter("categories2") != null) {
+            valueOf = request.getParameter("categories2");
+            DaoFactory.getAdsDao().insertIntoAdsCats(valueOf, ad.getId());
+        }
+        if (request.getParameter("categories3") != null) {
+            valueOf = request.getParameter("categories3");
+            DaoFactory.getAdsDao().insertIntoAdsCats(valueOf, ad.getId());
+        }
+        if (request.getParameter("categories4") != null) {
+            valueOf = request.getParameter("categories4");
+            DaoFactory.getAdsDao().insertIntoAdsCats(valueOf, ad.getId());
+        }
+
+
         response.sendRedirect("/ads");
     }
 }

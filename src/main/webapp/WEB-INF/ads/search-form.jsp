@@ -10,9 +10,9 @@
 <html>
 <head>
 
-<title>Title</title>
+    <title>Title</title>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Search Ads" />
+        <jsp:param name="title" value="Search Ads"/>
     </jsp:include>
 </head>
 <body>
@@ -26,10 +26,13 @@
     <c:choose>
         <c:when test="${ads != null}">
             <c:forEach var="ad" items="${ads}">
-                <h3>
-                    <a href="/view-ad?id=${ad.id}">${ad.title}</a>
-                    <small>${ad.description}</small>
-                </h3>
+
+                <div class="col-4">
+                    <h3><a href="/view-ad?id=${ad.id}">${ad.title}</a></h3>
+                    <p class="cluster">Posted at: ${ad.date}</p>
+                    <p class="cluster">${ad.categories}</p>
+                    <p>${ad.description}</p>
+                </div>
             </c:forEach>
         </c:when>
     </c:choose>

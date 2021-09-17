@@ -31,6 +31,7 @@
         width: 75%;
     }
 
+<<<<<<< HEAD
     .viewPage {
         height: 25%;
         width: 25%;
@@ -39,5 +40,19 @@
     .indexPage {
         height: 30%;
         width: 30%;
+=======
+    .pfp {
+        border: solid cornflowerblue 2px;
+        height: 125px;
+        width: 150px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .update {
+        position: fixed;
+        top: 20%;
+        right:60%;
+>>>>>>> main
     }
 </style>

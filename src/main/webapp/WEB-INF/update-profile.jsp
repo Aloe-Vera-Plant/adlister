@@ -18,10 +18,12 @@
         <h3>Edit User Info</h3>
         <div class="form-group">
             <label for="username">Username</label>
-            <input id="username" name="username"value="<c:out value="${user.username}"/>">
+            <input id="username" readonly name="username"value="<c:out value="${user.username}"/>">
             <br>
             <label for="email">Email</label>
             <input id="email" name="email" value="<c:out value="${user.email}"/>">
+            <label for="pfp">Profile Picture</label>
+            <input id="pfp" name="pfp" value="<c:out value="${pfp}"/>">
         </div>
         <button type="submit" class="btn btn-block btn-primary">Update</button>
     </form>

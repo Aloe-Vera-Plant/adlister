@@ -18,7 +18,24 @@
         <div class="col-6">
 
             <h1>Welcome, ${sessionScope.user.username}!</h1>
+
             <hr>
+
+                <img class="pfp" src="${profilepic}">
+<div class="container">
+    <div class="dropdown update">
+        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+           data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: 0"> +
+        </a>
+
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item" href="/update-profile">Update Profile</a></li>
+
+        </ul>
+
+    </div>
+</div>
+
             <h4>Current contact info: ${sessionScope.user.email}</h4>
 
         </div>
@@ -27,8 +44,10 @@
             <c:forEach var="ad" items="${ads}">
                 <div class="col-md-6">
                     <h2><a href="/view-ad?id=${ad.id}"><c:out value="${ad.title}"></c:out></a></h2>
-                    <p style="margin-bottom: 0px">ID#: <c:out value="${ad.id}"></c:out></p>
-                    <p style="margin-top: 1px">Listed by: <c:out value="${ad.username}"></c:out></p>
+                    <p class="cluster">Posted at: ${ad.date}</p>
+                    <p class="cluster">${ad.categories}</p>
+                    <p class="cluster">ID#: <c:out value="${ad.id}"></c:out></p>
+                    <p class="cluster">Listed by: <c:out value="${ad.username}"></c:out></p>
                     <hr>
                     <p><c:out value="${ad.description}"></c:out></p>
 

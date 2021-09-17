@@ -17,6 +17,13 @@ public interface Ads {
 
     List<Ad> searchAdsByUserID(long userID);
 
+    // to get the category name by category id
+    String getCategoryByID(int catid);
+
+    void insertIntoAdsCats(String selected, long id);
+
+    void getCatNamesByAdId(Ad ad);
+
 
     List<Ad> search(String searchTerm);
 

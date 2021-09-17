@@ -35,7 +35,8 @@
     </div>
     <div class="row d-flex justify-space-between">
         <div class="col-4">
-            <p>Posted by: ${username}</p>
+            <p>Posted by: ${username}</p><br>
+            <p class="cluster">Posted at: ${date}</p>
         </div>
         <div class="col-4">
             <p>Ad ID: ${id}</p>
