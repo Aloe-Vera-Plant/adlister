@@ -22,7 +22,7 @@
         </div>
         <div>
             <label for="img">Include image link:</label>
-            <input type="text" id="img" name="img">
+            <input type="text" id="img" name="img" value="<c:out value="${img}"/>">
         </div>
         <div class="form-group">
             <label for="description">Description</label>
