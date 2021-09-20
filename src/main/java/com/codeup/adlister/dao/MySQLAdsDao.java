@@ -188,6 +188,7 @@ public class MySQLAdsDao implements Ads {
             pstm = connection.prepareStatement(deleteAdCategories);
             pstm.setLong(1, id);
             pstm.executeUpdate();
+            pstm.close();
 
             pstm = connection.prepareStatement(deleteAd);
             pstm.setLong(1, id);
