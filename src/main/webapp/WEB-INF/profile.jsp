@@ -55,7 +55,7 @@
                     <h4 class="card-title">Posted by: <c:out value="${ad.username}"></c:out></h4>
                     <p class="card-text">Posted at: ${ad.date}</p>
                     <p class="card-text">${ad.categories}</p>
-                    <p class="card-text">${ad.description}</p>
+                    <p class="card-text text-center overflow-auto" style="width: auto; height: 200px;">${ad.description}</p>
                     <a href="/view-ad?id=${ad.id}" class="btn btn-primary">See Ad</a>
                 </div>
             </div>
