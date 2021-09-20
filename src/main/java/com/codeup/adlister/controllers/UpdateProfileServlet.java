@@ -50,8 +50,8 @@ public class UpdateProfileServlet extends HttpServlet {
         String newPfp = request.getParameter("pfp");
 
         boolean invalidInput = Form.usernameIsTaken(newUsername);
-
-
+        currentUser.pfp = newPfp;
+        request.getSession().setAttribute("user", currentUser);
             DaoFactory.getUsersDao().updateUserInfo(newEmail, newPfp, currentUser.getUsername());
             currentUser.setEmail(newEmail);
             currentUser.setUsername(newUsername);
