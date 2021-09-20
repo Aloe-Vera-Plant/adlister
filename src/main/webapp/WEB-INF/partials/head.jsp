@@ -26,7 +26,7 @@
         justify-content: center;
     }
 
-    .homePage {
+  .homePage {
         height: 75%;
         width: 75%;
     }

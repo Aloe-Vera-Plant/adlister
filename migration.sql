@@ -1,8 +1,7 @@
-
+drop database adlisterdb;
 
 CREATE DATABASE IF NOT EXISTS adlisterdb;
 USE adlisterdb;
-
 CREATE TABLE IF NOT EXISTS users
 (
     id        INT UNSIGNED NOT NULL AUTO_INCREMENT,
