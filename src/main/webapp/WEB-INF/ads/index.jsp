@@ -39,8 +39,9 @@
 
 
     <div class="bs-example">
-        <div class="container-fluid ">
-            <div class="card-deck">
+        <div class="container">
+            <div class="row">
+                <div class="card-deck">
                 <c:forEach var="ad" items="${ads}">
                     <div class="card" style="width: 350px">
                         <h5 class="text-center">${ad.title}</h5>
@@ -49,15 +50,16 @@
                             <img src="${ad.image}" class="card-img-top" alt="Card image">
                             <%--                            <hr>--%>
                         </c:if>
-                        <div class="card-body">
+                        <div class="card-body ">
                             <h4 class="card-title">Posted by: <c:out value="${ad.username}"></c:out></h4>
                             <p class="card-text">Posted at: ${ad.date}</p>
                             <p class="card-text">${ad.categories}</p>
-                            <p class="card-text text-center">${ad.description}</p>
+                            <p class="card-text text-center overflow-auto" style="width: auto; height: 200px;">${ad.description}</p>
                             <a href="/view-ad?id=${ad.id}" class="btn btn-primary">See Ad</a>
                         </div>
                     </div>
                 </c:forEach>
+            </div>
             </div>
         </div>
     </div>
